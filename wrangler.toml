@@ -1,0 +1,10 @@
+name = "assets"
+main = "index.ts"
+compatibility_date = "2023-11-21"
+
+[vars]
+VERSION = "Assets v0.1.0"
+
+[[r2_buckets]]
+binding = "assets"
+bucket_name = "assets"
