@@ -3,7 +3,7 @@ main = "index.ts"
 compatibility_date = "2023-11-21"
 
 [vars]
-VERSION = "Assets v0.1.0"
+VERSION = "Assets v0.2.0"
 
 [[r2_buckets]]
 binding = "assets"
