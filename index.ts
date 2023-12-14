@@ -10,17 +10,28 @@ function router() {
   const router = Router()
   router.all('/ping', () => json('Pong!'))
   router.all('/version', (_, env: Env) => json(env.VERSION))
-  router.get('/assets/:filename', get)
+  router.get('/assets/:filename', getAssets)
+  router.get('/favicon.ico', getFavicon)
   router.all('*', () => error(404, 'Invalid path.'))
   return router
 }
 
-export async function get(request: IRequest, env: Env) {
+async function getAssets(request: IRequest, env: Env) {
   const { params: { filename } } = request
   const site = new URL(request.url).hostname
   const key = [site, filename].join('/')
-  const item = await env.assets.get(key)
-  if (item === null) return error(404, 'File not found.')
+  return getItem(env.assets, key)
+}
+
+async function getFavicon(request: IRequest, env: Env) {
+  const site = new URL(request.url).hostname
+  const key = [site, 'favicon.ico'].join('/')
+  return getItem(env.assets, key)
+}
+
+async function getItem(bucket: R2Bucket, key: string,) {
+  const item = await bucket.get(key)
+  if (item === null) return error(404, 'Site icon not found.')
   const headers = new Headers()
   item.writeHttpMetadata(headers)
   return new Response(item.body, { headers })
