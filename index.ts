@@ -18,13 +18,13 @@ function router() {
 
 async function getAssets(request: IRequest, env: Env) {
   const { params: { filename } } = request
-  const site = new URL(request.url).hostname
+  const site = new URL(request.url).host
   const key = [site, filename].join('/')
   return getItem(env.assets, key)
 }
 
 async function getFavicon(request: IRequest, env: Env) {
-  const site = new URL(request.url).hostname
+  const site = new URL(request.url).host
   const key = [site, 'favicon.ico'].join('/')
   return getItem(env.assets, key)
 }
