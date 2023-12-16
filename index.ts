@@ -31,7 +31,7 @@ async function getFavicon(request: IRequest, env: Env) {
 
 async function getItem(bucket: R2Bucket, key: string,) {
   const item = await bucket.get(key)
-  if (item === null) return error(404, 'Site icon not found.')
+  if (item === null) return error(404, 'Asset not found.')
   const headers = new Headers()
   item.writeHttpMetadata(headers)
   return new Response(item.body, { headers })
