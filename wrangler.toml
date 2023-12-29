@@ -1,9 +1,6 @@
 name = "assets"
-main = "index.ts"
+main = "src/index.ts"
 compatibility_date = "2023-11-21"
-
-[vars]
-VERSION = "Assets v0.2.2"
 
 [[r2_buckets]]
 binding = "assets"
