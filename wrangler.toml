@@ -1,7 +1,16 @@
 name = "assets"
 main = "src/index.ts"
 compatibility_date = "2023-11-21"
+workers_dev = true
 
 [[r2_buckets]]
 binding = "assets"
 bucket_name = "assets"
+
+[[routes]]
+pattern = "*neko03.moe/assets/*"
+zone_name = "neko03.moe"
+
+[[routes]]
+pattern = "*neko03.moe/favicon.ico*"
+zone_name = "neko03.moe"
