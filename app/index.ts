@@ -1,4 +1,4 @@
-import { getAssets, getFavicon } from '@/src/assets'
+import { getAssets, getFavicon } from '@/app/assets'
 import { Router, error } from 'itty-router'
 
 export default {
